@@ -1,0 +1,12 @@
+(() => {
+  document.querySelectorAll('select').forEach(select => {
+    const options = Array.from(select.options);
+    const agreeOption = options.find(
+      opt => opt.text.trim().toLowerCase() === "agree"
+    );
+    if (agreeOption) {
+      select.value = agreeOption.value;
+      select.dispatchEvent(new Event('change', { bubbles: true }));
+    }
+  });
+})();
